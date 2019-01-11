@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Title } from '@angular/platform-browser';
+import { TypeModel } from '../../model/type.model';
+import { TypeService } from '../../service/type.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,30 +11,27 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
+  public types: TypeModel[];
+  public graphCard: any[];
 
-  constructor(private breakpointObserver: BreakpointObserver, private titleService: Title) {}
+  constructor(private titleService: Title, private typeService: TypeService) {}
 
   ngOnInit() {
     this.titleService.setTitle('DashBoard');
+
+    this.typeService.getTypes().then((result: TypeModel[]) => {
+      this.types = result;
+
+      this.types.forEach((type: TypeModel) => {
+        const card = {
+          col: 1,
+          row: 1,
+          type: type,
+          graphType: 'bar',
+        };
+        this.graphCard.push(card);
+      });
+    });
   }
 }

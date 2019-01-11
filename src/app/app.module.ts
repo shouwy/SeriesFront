@@ -1,36 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardModule } from './module/dashboard.module';
+import { AppRoutingModule } from './app-routing.module';
+import { MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
-  MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CanvasCardComponent } from './components/dashboard/canvas/app-canvas-card/canvas-card.component';
+import { TypeService } from './service/type.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    DashboardComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutModule,
+    CommonModule,
+    HttpClientModule,
+    DashboardModule,
+    MatListModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [TypeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
