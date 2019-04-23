@@ -1,4 +1,4 @@
-language: java
+dist: trusty
 addons:
   sonarcloud:
     organization: "shouwy-github" # the key of the org you chose at step #3
