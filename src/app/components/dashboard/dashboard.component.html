@@ -4,7 +4,7 @@
       <mat-grid-tile [colspan]="card.col" [rowspan]="card.row">
         <mat-card class="dashboard-card">
           <mat-card-header>
-            <mat-card-title>{{card.type.typeName}}</mat-card-title>
+            <mat-card-title>{{card.title}}</mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
             <app-canvas-card [card]="card"></app-canvas-card>
@@ -13,38 +13,18 @@
       </mat-grid-tile>
     </div>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>Etat</mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Etat Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>Type</mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Type Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>Etat Pers</mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Etat Pers Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
+    <div *ngFor="let card of matTabCard">
+      <mat-grid-tile [colspan]="card.col" [rowspan]="card.row">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>{{card.title}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <app-table-card [tableCard]="card"></app-table-card>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
 
     <mat-grid-tile [colspan]="3" [rowspan]="2">
       <mat-card class="dashboard-card">

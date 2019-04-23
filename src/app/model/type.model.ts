@@ -1,4 +1,4 @@
-import {EtatPersonnelModel} from "./etatPersonnel.model";
+import {EtatPersonnelModel} from './etatPersonnel.model';
 
 /**
  * Type

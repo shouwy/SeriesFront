@@ -5,9 +5,10 @@
 export const environment = {
   production: false,
   api: {
+    host: 'http://localhost',
+    port: ':8083',
+    contextPath: '/seriesApi' ,
     url: {
-      host: 'http://localhost',
-      port: ':8080',
       type: '/type',
       etat: '/etat',
       etatPersonal: '/etatPersonal',
